@@ -1,4 +1,5 @@
-import { GsiTerrainLayer } from '../index.js';
+//import { GsiTerrainLayer } from '../index.js';
+import { GsiTerrainLayer } from 'https://code4fukui.github.io/deckgl-gsi-terrain-layer/index.js';
 import { deck as _deck } from 'https://code4fukui.github.io/deck-es/deck.js';
 const Deck = _deck.Deck;
 
