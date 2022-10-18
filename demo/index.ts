@@ -1,6 +1,6 @@
-// @ts-ignore
 import { GsiTerrainLayer } from '../index.js';
-import { Deck } from '@deck.gl/core';
+import { deck as _deck } from 'https://code4fukui.github.io/deck-es/deck.js';
+const Deck = _deck.Deck;
 
 const TERRAIN_IMAGE =
     'https://cyberjapandata.gsi.go.jp/xyz/dem_png/{z}/{x}/{y}.png';
