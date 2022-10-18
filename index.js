@@ -37,6 +37,9 @@ import { TerrainLoader } from './gsi-terrain-loader/terrain-loader.js';
 
 const DUMMY_DATA = [1];
 
+const TERRAIN_IMAGE = 'https://cyberjapandata.gsi.go.jp/xyz/dem_png/{z}/{x}/{y}.png';
+const SURFACE_IMAGE = 'https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg';
+
 const defaultProps = {
   ...TileLayer.defaultProps,
   // Image url that encodes height data
@@ -63,7 +66,13 @@ const defaultProps = {
   wireframe: false,
   material: true,
 
-  loaders: [TerrainLoader]
+  loaders: [TerrainLoader],
+
+  id: 'gsi-terrain',
+  minZoom: 0,
+  maxZoom: 14,
+  elevationData: TERRAIN_IMAGE,
+  texture: SURFACE_IMAGE,
 };
 
 // Turns array of templates into a single string to work around shallow change
@@ -82,6 +91,7 @@ function urlTemplateToUpdateTrigger(template) {
  */
 export default class GsiTerrainLayer extends CompositeLayer {
   updateState({props, oldProps}) {
+    console.log(props);
     const elevationDataChanged = props.elevationData !== oldProps.elevationData;
     if (elevationDataChanged) {
       const {elevationData} = props;
