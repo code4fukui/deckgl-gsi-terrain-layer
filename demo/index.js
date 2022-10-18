@@ -13,11 +13,11 @@ const ELEVATION_DECODER = {
 
 const deck = new Deck({
     initialViewState: {
-        longitude: 138.73,
-        latitude: 35.36,
-        zoom: 12,
+        longitude: 135.98,
+        latitude: 35.75,
+        zoom: 10,
         pitch: 70,
-        maxPitch: 80,
+        maxPitch: 85,
     },
     controller: true,
     layers: [
