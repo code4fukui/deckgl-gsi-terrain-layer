@@ -1,6 +1,6 @@
 // __VERSION__ is injected by babel-plugin-version-inline
 
-import loadTerrain from './parse-terrain';
+import loadTerrain from './parse-terrain.js';
 
 // @ts-ignore TS2304: Cannot find name '__VERSION__'.
 const VERSION = typeof __VERSION__ !== 'undefined' ? __VERSION__ : 'latest';

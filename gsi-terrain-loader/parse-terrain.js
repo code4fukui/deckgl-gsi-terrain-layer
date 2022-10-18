@@ -1,5 +1,8 @@
-import Martini from '@mapbox/martini';
-import { getMeshBoundingBox } from '@loaders.gl/schema';
+//import Martini from '@mapbox/martini';
+import * as MartiniModule from "https://code4fukui.github.io/martini/index.js";
+//import { getMeshBoundingBox } from '@loaders.gl/schema';
+import { getMeshBoundingBox } from '../utils.js';
+const Martini = MartiniModule.default;
 
 function getTerrain(imageData, tileSize, elevationDecoder) {
     const { scaler, offset } = elevationDecoder;

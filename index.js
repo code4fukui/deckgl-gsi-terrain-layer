@@ -18,12 +18,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+import { deck } from 'https://code4fukui.github.io/deck-es/deck.js';
+/*
 import {CompositeLayer, log} from '@deck.gl/core';
 import {SimpleMeshLayer} from '@deck.gl/mesh-layers';
 import {COORDINATE_SYSTEM} from '@deck.gl/core';
-import {TerrainLoader} from './gsi-terrain-loader/terrain-loader';
 import {TileLayer} from '@deck.gl/geo-layers';
-import {urlType, getURLFromTemplate} from  '@deck.gl/geo-layers/src/tile-layer/utils';
+*/
+//import {urlType, getURLFromTemplate} from  '@deck.gl/geo-layers/src/tile-layer/utils';
+import {urlType, getURLFromTemplate} from './utils.js';
+const {
+  CompositeLayer, log,
+  SimpleMeshLayer,
+  COORDINATE_SYSTEM,
+  TileLayer,
+} = deck;
+import { TerrainLoader } from './gsi-terrain-loader/terrain-loader.js';
 
 const DUMMY_DATA = [1];
 
