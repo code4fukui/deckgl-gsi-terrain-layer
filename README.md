@@ -11,19 +11,14 @@ RGB値の標高への換算(elevationDecoder)以外はTerrainLayerと全く同�
 
 以下のURLで地理院タイルのみを用いた3D表示のサンプルが見られます
 
-https://kanahiro.github.io/deckgl-gsi-terrain-layer/
+https://code4fukui.github.io/deckgl-gsi-terrain-layer/demo/
 
 
 ## usage
 
-```shell
-
-npm install deckgl-gsi-terrain-layer
-```
-
 ```javascript
 
-import { GsiTerrainLayer } from 'deckgl-gsi-terrain-layer';
+import { GsiTerrainLayer } from 'https://code4fukui.github.io/deckgl-gsi-terrain-layer/index.js';
 
 // 地理院タイル
 const TERRAIN_IMAGE = 'https://cyberjapandata.gsi.go.jp/xyz/dem_png/{z}/{x}/{y}.png';
@@ -46,9 +41,6 @@ const layer = new GsiTerrainLayer({
 
 // あとは通常のTerrainLayerと同じ扱いです
 ```
-
-<a href='./sample/src/components/GsiTerrainLayer.vue'>./sample/src/components/GsiTerrainLayer.vue</a>が実装例です
-
 
 ## Tips:elevationDecoder
 
