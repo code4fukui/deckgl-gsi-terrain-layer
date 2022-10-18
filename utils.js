@@ -1,3 +1,5 @@
+// https://github.com/visgl/deck.gl/blob/master/modules/geo-layers/src/tile-layer/utils.ts
+
 export const urlType = {
   type: 'url',
   value: null,
@@ -57,6 +59,12 @@ export function getURLFromTemplate(template, tile) {
   return url;
 }
 
+/**
+ * Get the (axis aligned) bounding box of a mesh
+ * @param attributes
+ * @returns array of two vectors representing the axis aligned bounding box
+ */
+// https://github.com/visgl/loaders.gl/blob/master/modules/schema/src/category/mesh/mesh-utils.ts
 export function getMeshBoundingBox(attributes/*: MeshAttributes*/)/*: BoundingBox */{
   let minX = Infinity;
   let minY = Infinity;
