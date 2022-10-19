@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>deckgl-gsi-terrain-layer</title>
+</head><body>
+
+<h1>deck-es inline map demo</h1>
+<div id="map" style="position: relative; height: 500px; background-color: #224;"></div>
+<a href="https://github.com/code4fukui/deckgl-gsi-terrain-layer">src on GitHub</a>
+
+<script type="module">
+import { deck } from 'https://code4fukui.github.io/deck-es/deck.js';
+import { GsiTerrainLayer } from 'https://code4fukui.github.io/deckgl-gsi-terrain-layer/index.js';
+
+new deck.Deck({
+  parent: map,
+  initialViewState: {
+    longitude: 135.98,
+    latitude: 35.75,
+    zoom: 10,
+    pitch: 70,
+    maxPitch: 85,
+  },
+  controller: true,
+  views: [
+    new deck.MapView({
+      controller: { touchRotate: true, doubleClickZoom: true }
+    }),
+  ],
+  layers: [new GsiTerrainLayer()],
+});
+</script>
+
+</body></html>

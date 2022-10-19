@@ -11,8 +11,9 @@ RGB値の標高への換算(elevationDecoder)以外はTerrainLayerと全く同�
 
 以下のURLで地理院タイルのみを用いた3D表示のサンプルが見られます
 
-https://code4fukui.github.io/deckgl-gsi-terrain-layer/demo/
-
+- [DEMO](https://code4fukui.github.io/deckgl-gsi-terrain-layer/demo/)
+- [DEMO HTML内表示](https://code4fukui.github.io/deckgl-gsi-terrain-layer/demo/inline.html)
+- [DEMO カスタム設定](https://code4fukui.github.io/deckgl-gsi-terrain-layer/demo/custom.html)
 
 ## usage
 
