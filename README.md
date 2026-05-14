@@ -1,79 +1,32 @@
 # deckgl-gsi-terrain-layer
 
-<img src='./sample.jpg'>
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
 
-国土地理院の標高タイルを用いて地形を3D表示するために、deck.glのTerrainLayerを標高タイルの独特な仕様に合わせて拡張したものです
+A deck.gl `TerrainLayer` extension for visualizing 3D terrain using elevation tiles from the Geospatial Information Authority of Japan (GSI).
 
-RGB値の標高への換算(elevationDecoder)以外はTerrainLayerと全く同じ仕様です
+## Demo
 
-## sample
+The following demos render a 3D map of Japan using GSI data:
 
-以下のURLで地理院タイルのみを用いた3D表示のサンプルが見られます
+- [Simple Demo](https://code4fukui.github.io/deckgl-gsi-terrain-layer/demo/)
+- [Inline HTML Demo](https://code4fukui.github.io/deckgl-gsi-terrain-layer/demo/inline.html)
+- [Custom Settings Demo](https://code4fukui.github.io/deckgl-gsi-terrain-layer/demo/custom.html)
 
-- [DEMO](https://code4fukui.github.io/deckgl-gsi-terrain-layer/demo/)
-- [DEMO HTML内表示](https://code4fukui.github.io/deckgl-gsi-terrain-layer/demo/inline.html)
-- [DEMO カスタム設定](https://code4fukui.github.io/deckgl-gsi-terrain-layer/demo/custom.html)
+## Features
 
-(参考、[deck.gl | Deck](https://deck.gl/docs/api-reference/core/deck))
+- **GSI Tile Support:** Natively renders 3D terrain from [GSI elevation tiles](https://maps.gsi.go.jp/development/demtile.html).
+- **Custom Decoder:** Includes a specialized elevation decoder that correctly interprets the GSI's unique PNG tile format.
+- **High-Quality Textures:** Easily overlays [GSI's seamless aerial photography](https://maps.gsi.go.jp/development/ichiran.html) as a surface texture.
+- **Extends TerrainLayer:** Built on the standard deck.gl `TerrainLayer`, inheriting its core functionality.
 
-## usage
+## Usage
 
-```javascript
+Import `GsiTerrainLayer` and add it to the `layers` prop of your deck.gl instance. This layer is designed to work with GSI's tile services out of the box.
 
-import { GsiTerrainLayer } from 'https://code4fukui.github.io/deckgl-gsi-terrain-layer/index.js';
-
-// 地理院タイル
-const TERRAIN_IMAGE = 'https://cyberjapandata.gsi.go.jp/xyz/dem_png/{z}/{x}/{y}.png';
-const SURFACE_IMAGE = 'https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg';
-
-// RGB標高変換パラメータ
-const ELEVATION_DECODER = {
-    scaler: 0.01, // 分解能, 実寸なら0.01
-    offset: 0, // RGB値がゼロの場合の標高値
-};
-
-const layer = new GsiTerrainLayer({
-    id: 'gsiTerrain',
-    minZoom: 0,
-    maxZoom: 15,
-    elevationDecoder: ELEVATION_DECODER,
-    elevationData: TERRAIN_IMAGE,
-    texture: SURFACE_IMAGE,
-});
-
-// あとは通常のTerrainLayerと同じ扱いです
-```
-
-## Tips:elevationDecoder
-
-### TerrainLayerの場合
-
-deck.glオリジナルのTerrainLayerのelevationDecoderは以下のようなパラメータです
-
-```javascript
-elevationDecoder: {
-    rScaler: 6553.6,
-    gScaler: 25.6,
-    bScaler: 0.1,
-    offset: 0,
-};
-```
-
-上記はRGBのそれぞれの値に対し、Red1当たりの標高値が6553.6m、Greenが25.6m、Blueが0.1mという事を意味します。
-
-[※Mapboxなどで採用されているMapzen-Terrainの変換パラメータです](https://docs.mapbox.com/help/troubleshooting/access-elevation-data/)
-
-### GsiTerrainLayerの場合
-
-[国土地理院/標高タイル詳細仕様](https://maps.gsi.go.jp/development/demtile.html)から、無効値の定義などが独特であり、前述のTerrainLayerの様にRGB値で単調増加させればよいとは言えませんが、一部の特殊な値を除いては分解能0.01mでの単調増加です。
-
-したがって、TerrainLayerで言うrScaler, gScaler, bScalerは固定値でよいため、本リポジトリで公開するGsiTerrainLayerでは、このパラメータを以下のように変更しています。
-
-```javascript
-elevationDecoder: {
-    scaler: 0.01,
-    offset: 0,
-};
-```
-
-scalerは分解能を表します。実寸なら0.01ですが、強調表示したい場合、たとえば3倍にしたいなら0.03にすればよいです。
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>deckgl-gsi-terrain-layer Demo</title>
+    <style>
+      body { margin: 0; font-family: sans-serif
